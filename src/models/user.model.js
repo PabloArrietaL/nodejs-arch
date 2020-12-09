@@ -8,13 +8,13 @@ const userSchema = new Schema({
   password: { type: String, required: true },
 });
 
-userSchema.methods.toJson = () => {
+userSchema.methods.toJSON = function () {
   let user = this.toObject();
   delete user.password;
   return user;
 };
 
-userSchema.methods.comparePasswords = (password) => {
+userSchema.methods.comparePassword = function (password) {
   return compareSync(password, this.password);
 };
 
